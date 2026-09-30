@@ -53,3 +53,32 @@ Place the file `Insurance claims data.csv` in the project root.
 - Risk bands with 2.7× difference in observed claim rates (3.6% → 9.6%)
 
 ## Project Structure
+├── Insurance claims data.csv
+├── motor_insurance_pipeline.R      # main modelling script
+
+
+## How to Run
+# Required packages
+install.packages(c("tidyverse", "pROC", "glmnet", "mgcv", 
+                   "xgboost", "scales", "forcats"))
+
+# Run the full pipeline
+source("motor_insurance_pipeline.R")
+
+Key Findings
+
+Subscription length is the strongest single predictor
+Vehicle age is the dominant vehicle characteristic (negative association)
+Safety features add only marginal lift once collinearity is controlled
+Vehicle characteristics explain more than region density; both explain < 1% of deviance
+XGBoost improves ranking power; GLM / ensemble remain better calibrated for pricing
+
+Limitations
+
+Frequency model only (no severity)
+No mileage, claims history or behavioural data
+Modest overall discrimination (ceiling ≈ 0.68 on this dataset)
+
+
+
+
